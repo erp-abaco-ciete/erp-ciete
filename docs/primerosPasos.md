@@ -60,6 +60,15 @@ Se ejecutaron las migraciones iniciales de Laravel para comprobar que la conexi�
 php artisan migrate
 ```
 
+Con estas migraciones se crea automáticamente el usuario administrador para el panel:
+
+- email: `admin@admin.es`
+- password: `admin1234*`
+- role: `admin`
+
+Importante: el login de Laravel usa la tabla `users`.  
+La tabla `usuarios` del archivo `database/schema/erp_ciete_base.sql` pertenece al esquema ERP y no sustituye a `users` para autenticación web.
+
 ### 8. Comprobación del arranque del proyecto
 
 Se comprobó que el proyecto arranca correctamente tanto en backend como en frontend:
