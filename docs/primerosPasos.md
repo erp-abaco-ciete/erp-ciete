@@ -68,12 +68,3 @@ Se comprobó que el proyecto arranca correctamente tanto en backend como en fron
 php artisan serve
 npm run dev
 ```
-
-### Imágenes locales
-
-Si tenéis imágenes que forman parte del proyecto (no por URL), tenéis dos opciones comunes:
-
-- Opción 1 (sencilla): colocad las imágenes en `public/images`. Se servirán tal cual y podréis referenciarlas con `/images/mi-imagen.jpg` (en Blade: `asset('images/mi-imagen.jpg')`).
-- Opción 2 (recomendado para gestión de uploads): guardadlas en `storage/app/public/images` y ejecutad `php artisan storage:link` para crear el enlace simbólico público. Después referenciadlas con `asset('storage/images/mi-imagen.jpg')`.
-
-Para componentes React con Vite, las imágenes estáticas en `public/` se pueden usar directamente (ej. `/images/mi-imagen.jpg`). Si preferís importarlas en los módulos, colocadlas dentro de `resources/js/` y usad `import img from '../../images/mi.jpg'` desde los componentes (Vite las procesará).
