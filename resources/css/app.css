@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --ciete-red: #b91c1c;
+        --ciete-red-dark: #991b1b;
+        --ciete-slate: #334155;
+    }
+}
+
+@layer components {
+    .ciete-shell {
+        @apply relative min-h-screen bg-slate-50 text-slate-800;
+    }
+
+    .ciete-watermark {
+        @apply pointer-events-none absolute left-1/2 top-1/2 w-[min(72vw,800px)] -translate-x-1/2 -translate-y-1/2 opacity-[0.08];
+    }
+
+    .ciete-nav {
+        @apply relative z-10 border-b border-slate-200/90 bg-white/95;
+    }
+
+    .ciete-footer {
+        @apply relative z-10 border-t border-slate-200/90 py-3 text-center text-xs text-slate-500;
+    }
+
+    .ciete-link {
+        @apply text-sm font-medium text-slate-700 transition hover:text-[var(--ciete-red)];
+    }
+
+    .ciete-btn-primary {
+        @apply inline-flex items-center justify-center rounded-md bg-[var(--ciete-red)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--ciete-red-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--ciete-red)] focus:ring-offset-2;
+    }
+
+    .ciete-btn-secondary {
+        @apply inline-flex items-center justify-center rounded-md border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2;
+    }
+
+    .ciete-panel {
+        @apply rounded-xl border border-slate-200 bg-white p-6 shadow-sm;
+    }
+}
