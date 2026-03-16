@@ -48,7 +48,18 @@ php artisan key:generate
 
 ### 6. Configuración de base de datos
 
-Antes de ejecutar las migraciones hay que crear la base de datos en XAMPP (phpMyAdmin). Nombrad la base de datos igual que el valor de `DB_DATABASE` en el archivo `.env` o, si preferís otro nombre, actualizad `DB_DATABASE` en `.env` para que coincida.
+Antes de ejecutar las migraciones hay que crear la base de datos en XAMPP (phpMyAdmin).
+
+Nombre actual configurado en `.env`:
+
+- `DB_CONNECTION=mysql`
+- `DB_HOST=127.0.0.1`
+- `DB_PORT=3306`
+- `DB_DATABASE=abaco_ciete`
+
+Por tanto, en phpMyAdmin hay que crear una base de datos llamada `abaco_ciete`.
+
+Si usáis otro nombre, actualizad `DB_DATABASE` en `.env` para que coincida exactamente con el nombre creado en XAMPP.
 
 Se configuró el resto de valores de conexión en `.env` para conectar el proyecto con MySQL.
 
