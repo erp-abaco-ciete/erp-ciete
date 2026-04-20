@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\PresupuestoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,6 +27,15 @@ Route::middleware('auth')->group(function () {
 
         return Inertia::render('Admin/Dashboard');
     })->name('admin.dashboard');
+
+    Route::resource('presupuestos', PresupuestoController::class);
+    Route::resource('pedidos', PedidoController::class);
+    Route::post('presupuestos/{presupuesto}/convertir',
+        [PresupuestoController::class, 'convertirAPedido'])
+        ->name('presupuestos.convertir');
+    Route::patch('presupuestos/{presupuesto}/estado',
+        [PresupuestoController::class, 'cambiarEstado'])
+        ->name('presupuestos.estado');
 });
 
 require __DIR__.'/auth.php';

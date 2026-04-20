@@ -36,6 +36,38 @@ export default function Dashboard() {
                         </Link>
                     )}
                 </div>
+
+                <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <Link
+                        href={route('presupuestos.index')}
+                        className="ciete-panel flex flex-col gap-1 transition hover:shadow-md"
+                    >
+                        <span className="text-xs font-semibold uppercase tracking-[0.15em] text-slate-500">
+                            Módulo
+                        </span>
+                        <span className="text-lg font-semibold text-[var(--ciete-slate)]">
+                            Presupuestos
+                        </span>
+                        <span className="text-sm text-slate-600">
+                            Crear y gestionar presupuestos
+                        </span>
+                    </Link>
+
+                    <Link
+                        href={route('pedidos.index')}
+                        className="ciete-panel flex flex-col gap-1 transition hover:shadow-md"
+                    >
+                        <span className="text-xs font-semibold uppercase tracking-[0.15em] text-slate-500">
+                            Módulo
+                        </span>
+                        <span className="text-lg font-semibold text-[var(--ciete-slate)]">
+                            Pedidos
+                        </span>
+                        <span className="text-sm text-slate-600">
+                            Consultar y hacer seguimiento de pedidos
+                        </span>
+                    </Link>
+                </div>
             </div>
         </AuthenticatedLayout>
     );

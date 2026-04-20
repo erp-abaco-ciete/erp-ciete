@@ -1,0 +1,5 @@
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } }
+.section-title { font-size: 15px; font-weight: 600; margin-bottom: 16px; color: #1e293b; }
+.detail-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f1f5f9; }
+.detail-row span { color: #64748b; }

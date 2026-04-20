@@ -5,6 +5,8 @@ export default function PortalNavbar({ user = null, canLogin = true, canRegister
     const navItems = user
         ? [
               { label: 'Dashboard', href: route('dashboard') },
+              { label: 'Presupuestos', href: route('presupuestos.index') },
+              { label: 'Pedidos', href: route('pedidos.index') },
               ...(user.role === 'admin'
                   ? [{ label: 'Panel Admin', href: route('admin.dashboard') }]
                   : []),

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/core/services/pedidos.service.ts"],
+  "sourcesContent": ["import { Injectable } from '@angular/core';\nimport { HttpClient } from '@angular/common/http';\nimport { Observable } from 'rxjs';\nimport { environment } from '../../../environments/environment';\n\n@Injectable({ providedIn: 'root' })\nexport class PedidosService {\n  private apiUrl = `${environment.apiUrl}/pedidos`;\n\n  constructor(private http: HttpClient) {}\n\n  getAll(): Observable<any[]> {\n    return this.http.get<any[]>(this.apiUrl);\n  }\n\n  getOne(id: number): Observable<any> {\n    return this.http.get<any>(`${this.apiUrl}/${id}`);\n  }\n}\n"],
+  "mappings": ";;;;;;;;AAMM,IAAO,iBAAP,MAAO,gBAAc;EAGzB,YAAoB,MAAgB;AAAhB,SAAA,OAAA;AAFZ,SAAA,SAAS,GAAG,YAAY,MAAM;EAEC;EAEvC,SAAM;AACJ,WAAO,KAAK,KAAK,IAAW,KAAK,MAAM;EACzC;EAEA,OAAO,IAAU;AACf,WAAO,KAAK,KAAK,IAAS,GAAG,KAAK,MAAM,IAAI,EAAE,EAAE;EAClD;;;uBAXW,iBAAc,mBAAA,UAAA,CAAA;IAAA;EAAA;;4EAAd,iBAAc,SAAd,gBAAc,WAAA,YADD,OAAM,CAAA;EAAA;;",
+  "names": []
+}

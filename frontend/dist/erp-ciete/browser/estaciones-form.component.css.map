@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/estaciones/form/estaciones-form.component.css"],
+  "sourcesContent": [".form-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }\n@media (max-width: 992px) { .form-grid { grid-template-columns: 1fr 1fr; } }\n@media (max-width: 576px) { .form-grid { grid-template-columns: 1fr; } }\n.section-title { font-size: 15px; font-weight: 600; margin-bottom: 16px; color: #1e293b; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }\n"],
+  "mappings": ";AAAA,CAAC;AAAY,WAAS;AAAM,yBAAuB,IAAI,IAAI;AAAK,OAAK;AAAM;AAC3E,OAAO,CAAC,SAAS,EAAE;AAAS,GAD3B;AACwC,2BAAuB,IAAI;AAAK;AAAE;AAC3E,OAAO,CAAC,SAAS,EAAE;AAAS,GAF3B;AAEwC,2BAAuB;AAAK;AAAE;AACvE,CAAC;AAAgB,aAAW;AAAM,eAAa;AAAK,iBAAe;AAAM,SAAO;AAAS,kBAAgB;AAAK,iBAAe,IAAI,MAAM;AAAS;",
+  "names": []
+}

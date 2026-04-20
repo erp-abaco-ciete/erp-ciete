@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/presupuestos/form/presupuestos-form.component.css"],
+  "sourcesContent": [".lineas-section { margin-top: 24px; }\n.lineas-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }\n.lineas-header h3 { font-size: 16px; font-weight: 600; }\n.empty-lineas { padding: 24px; text-align: center; color: #94a3b8; background: #f8fafc; border-radius: 8px; border: 1px dashed #e2e8f0; }\ntable .form-control { margin: 0; }\n"],
+  "mappings": ";AAAA,CAAC;AAAiB,cAAY;AAAM;AACpC,CAAC;AAAgB,WAAS;AAAM,eAAa;AAAQ,mBAAiB;AAAe,iBAAe;AAAM;AAC1G,CADC,cACc;AAAK,aAAW;AAAM,eAAa;AAAK;AACvD,CAAC;AAAe,WAAS;AAAM,cAAY;AAAQ,SAAO;AAAS,cAAY;AAAS,iBAAe;AAAK,UAAQ,IAAI,OAAO;AAAS;AACxI,MAAM,CAAC;AAAe,UAAQ;AAAG;",
+  "names": []
+}

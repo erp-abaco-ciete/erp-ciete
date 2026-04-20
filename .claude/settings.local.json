@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -v '^$')",
+      "Bash(php artisan:*)",
+      "Read(//usr/**)",
+      "Read(//usr/local/**)",
+      "Bash(command -v php.exe)",
+      "Read(//mnt/**)"
+    ]
+  }
+}
