@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
+import { permisosGuard } from './core/guards/permisos.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -118,5 +119,90 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/estaciones/form/estaciones-form.component').then(m => m.EstacionesFormComponent),
     canActivate: [authGuard]
+  },
+  // --- Usuarios ---
+  {
+    path: 'usuarios',
+    loadComponent: () =>
+      import('./pages/usuarios/list/usuarios-list.component').then(m => m.UsuariosListComponent),
+    canActivate: [authGuard]
+  },
+  {
+    path: 'usuarios/new',
+    loadComponent: () =>
+      import('./pages/usuarios/form/usuarios-form.component').then(m => m.UsuariosFormComponent),
+    canActivate: [authGuard]
+  },
+  {
+    path: 'usuarios/:id/edit',
+    loadComponent: () =>
+      import('./pages/usuarios/form/usuarios-form.component').then(m => m.UsuariosFormComponent),
+    canActivate: [authGuard]
+  },
+  // --- Contratos ---
+  {
+    path: 'contratos',
+    loadComponent: () =>
+      import('./pages/contratos/list/contratos-list.component').then(m => m.ContratosListComponent),
+    canActivate: [authGuard, permisosGuard],
+    data: { modulo: 'contratos' }
+  },
+  {
+    path: 'contratos/new',
+    loadComponent: () =>
+      import('./pages/contratos/form/contratos-form.component').then(m => m.ContratosFormComponent),
+    canActivate: [authGuard, permisosGuard],
+    data: { modulo: 'contratos' }
+  },
+  {
+    path: 'contratos/:id/edit',
+    loadComponent: () =>
+      import('./pages/contratos/form/contratos-form.component').then(m => m.ContratosFormComponent),
+    canActivate: [authGuard, permisosGuard],
+    data: { modulo: 'contratos' }
+  },
+  // --- Tarifario ---
+  {
+    path: 'tarifario',
+    loadComponent: () =>
+      import('./pages/tarifario/list/tarifario-list.component').then(m => m.TarifarioListComponent),
+    canActivate: [authGuard, permisosGuard],
+    data: { modulo: 'tarifario' }
+  },
+  {
+    path: 'tarifario/new',
+    loadComponent: () =>
+      import('./pages/tarifario/form/tarifario-form.component').then(m => m.TarifarioFormComponent),
+    canActivate: [authGuard, permisosGuard],
+    data: { modulo: 'tarifario' }
+  },
+  {
+    path: 'tarifario/:id',
+    loadComponent: () =>
+      import('./pages/tarifario/detail/tarifario-detail.component').then(m => m.TarifarioDetailComponent),
+    canActivate: [authGuard, permisosGuard],
+    data: { modulo: 'tarifario' }
+  },
+  // --- Facturas ---
+  {
+    path: 'facturas',
+    loadComponent: () =>
+      import('./pages/facturas/list/facturas-list.component').then(m => m.FacturasListComponent),
+    canActivate: [authGuard, permisosGuard],
+    data: { modulo: 'facturas' }
+  },
+  {
+    path: 'facturas/new',
+    loadComponent: () =>
+      import('./pages/facturas/form/facturas-form.component').then(m => m.FacturasFormComponent),
+    canActivate: [authGuard, permisosGuard],
+    data: { modulo: 'facturas' }
+  },
+  {
+    path: 'facturas/:id',
+    loadComponent: () =>
+      import('./pages/facturas/detail/facturas-detail.component').then(m => m.FacturasDetailComponent),
+    canActivate: [authGuard, permisosGuard],
+    data: { modulo: 'facturas' }
   },
 ];

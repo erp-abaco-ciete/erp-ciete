@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, DateTime, Text
 from database import Base
 
 
@@ -11,6 +11,7 @@ class User(Base):
     email_verified_at = Column(DateTime, nullable=True)
     role = Column(String, nullable=False, default="user")
     password = Column(String, nullable=False)
+    permisos = Column(Text, nullable=True)
     remember_token = Column(String, nullable=True)
     created_at = Column(DateTime, nullable=True)
     updated_at = Column(DateTime, nullable=True)

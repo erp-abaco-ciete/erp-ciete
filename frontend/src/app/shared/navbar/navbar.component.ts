@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   template: `
     <nav class="navbar">
       <div class="navbar-brand">
@@ -23,6 +24,10 @@ import { AuthService } from '../../core/services/auth.service';
         <a routerLink="/empresas" routerLinkActive="active">Empresas</a>
         <a routerLink="/contactos" routerLinkActive="active">Contactos</a>
         <a routerLink="/estaciones" routerLinkActive="active">Estaciones</a>
+        <a routerLink="/contratos" routerLinkActive="active" *ngIf="hasPermiso('contratos')">Contratos</a>
+        <a routerLink="/tarifario" routerLinkActive="active" *ngIf="hasPermiso('tarifario')">Tarifario</a>
+        <a routerLink="/facturas" routerLinkActive="active" *ngIf="hasPermiso('facturas')">Facturas</a>
+        <a routerLink="/usuarios" routerLinkActive="active" *ngIf="isAdmin">Usuarios</a>
       </div>
 
       <button class="btn-logout" (click)="logout()">Cerrar sesión</button>
@@ -30,8 +35,29 @@ import { AuthService } from '../../core/services/auth.service';
   `,
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+  isAdmin = false;
+  permisos: any = {};
+
   constructor(private auth: AuthService) {}
+
+  ngOnInit(): void {
+    this.auth.getMe().subscribe({
+      next: (user: any) => {
+        this.isAdmin = user.role === 'admin';
+        try {
+          this.permisos = JSON.parse(user.permisos || '{}');
+        } catch {
+          this.permisos = {};
+        }
+      }
+    });
+  }
+
+  hasPermiso(modulo: string): boolean {
+    if (this.isAdmin) return true;
+    return this.permisos[modulo] === true;
+  }
 
   logout(): void {
     this.auth.logout();

@@ -84,6 +84,58 @@ import { NavbarComponent } from '../../shared/navbar/navbar.component';
           </div>
           <div class="module-arrow">→</div>
         </a>
+
+        <a routerLink="/contratos" class="module-card" *ngIf="hasPermiso('contratos')">
+          <div class="module-icon" style="background:#f0fdf4; color:#15803d">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          <div class="module-info">
+            <h3>Contratos</h3>
+            <p>Gestiona los contratos con empresas</p>
+          </div>
+          <div class="module-arrow">→</div>
+        </a>
+
+        <a routerLink="/tarifario" class="module-card" *ngIf="hasPermiso('tarifario')">
+          <div class="module-icon" style="background:#fefce8; color:#a16207">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+            </svg>
+          </div>
+          <div class="module-info">
+            <h3>Tarifario</h3>
+            <p>Gestiona tarifarios y servicios</p>
+          </div>
+          <div class="module-arrow">→</div>
+        </a>
+
+        <a routerLink="/facturas" class="module-card" *ngIf="hasPermiso('facturas')">
+          <div class="module-icon" style="background:#fff7ed; color:#c2410c">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <div class="module-info">
+            <h3>Facturas</h3>
+            <p>Gestiona facturas y cobros</p>
+          </div>
+          <div class="module-arrow">→</div>
+        </a>
+
+        <a routerLink="/usuarios" class="module-card" *ngIf="isAdmin">
+          <div class="module-icon" style="background:#f0f9ff; color:#0369a1">
+            <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+            </svg>
+          </div>
+          <div class="module-info">
+            <h3>Usuarios</h3>
+            <p>Gestiona usuarios y permisos</p>
+          </div>
+          <div class="module-arrow">→</div>
+        </a>
       </div>
     </div>
   `,
@@ -91,13 +143,28 @@ import { NavbarComponent } from '../../shared/navbar/navbar.component';
 })
 export class DashboardComponent implements OnInit {
   userName = '';
+  isAdmin = false;
+  permisos: any = {};
 
   constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
     this.auth.getMe().subscribe({
-      next: (user: any) => this.userName = user.name,
+      next: (user: any) => {
+        this.userName = user.name;
+        this.isAdmin = user.role === 'admin';
+        try {
+          this.permisos = JSON.parse(user.permisos || '{}');
+        } catch {
+          this.permisos = {};
+        }
+      },
       error: () => this.userName = 'Usuario'
     });
+  }
+
+  hasPermiso(modulo: string): boolean {
+    if (this.isAdmin) return true;
+    return this.permisos[modulo] === true;
   }
 }
