@@ -1,0 +1,96 @@
+<app-navbar></app-navbar>
+<div class="page-container">
+  <div class="page-header">
+    <h1>Contratos y Tarifarios</h1>
+  </div>
+  <div *ngIf="successMsg" class="alert alert-success">{{ successMsg }}</div>
+
+  <div class="tabs">
+    <button class="tab-btn" [class.active]="activeTab === 'contratos'" (click)="activeTab = 'contratos'">Contratos</button>
+    <button class="tab-btn" [class.active]="activeTab === 'tarifarios'" (click)="activeTab = 'tarifarios'">Tarifarios</button>
+  </div>
+
+  <!-- CONTRATOS -->
+  <div *ngIf="activeTab === 'contratos'">
+    <div class="page-header" style="margin-bottom:1rem">
+      <span style="font-size:15px;font-weight:600;color:#374151">Contratos</span>
+      <a routerLink="/contratos/new" class="btn btn-primary">+ Nuevo Contrato</a>
+    </div>
+    <div class="card">
+      <div *ngIf="loadingC" style="text-align:center;padding:32px;color:#64748b">Cargando...</div>
+      <div class="table-wrapper" *ngIf="!loadingC">
+        <table>
+          <thead>
+            <tr>
+              <th>Nº Contrato</th>
+              <th>Nombre</th>
+              <th>Empresa</th>
+              <th>Tarifario</th>
+              <th>Fecha inicio</th>
+              <th>Fecha fin</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of contratos">
+              <td><strong>{{ c.numero_contrato || '—' }}</strong></td>
+              <td>{{ c.nombre || '—' }}</td>
+              <td>{{ getNombreEmpresa(c.id_empresa) }}</td>
+              <td>{{ getNombreTarifario(c.id_tarifario) }}</td>
+              <td>{{ c.fecha_inicio || '—' }}</td>
+              <td>{{ c.fecha_fin || '—' }}</td>
+              <td>
+                <span class="badge" [class]="isVigente(c.fecha_fin) ? 'badge-aprobado' : 'badge-rechazado'">
+                  {{ isVigente(c.fecha_fin) ? 'Vigente' : 'Caducado' }}
+                </span>
+              </td>
+              <td class="actions-cell">
+                <a [routerLink]="['/contratos', c.id_contrato, 'edit']" class="btn btn-sm btn-secondary">Editar</a>
+                <button class="btn btn-sm btn-danger" (click)="eliminarContrato(c)">Eliminar</button>
+              </td>
+            </tr>
+            <tr *ngIf="contratos.length === 0">
+              <td colspan="8" style="text-align:center;color:#94a3b8;padding:32px">No hay contratos</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- TARIFARIOS -->
+  <div *ngIf="activeTab === 'tarifarios'">
+    <div class="page-header" style="margin-bottom:1rem">
+      <span style="font-size:15px;font-weight:600;color:#374151">Tarifarios</span>
+      <a routerLink="/tarifario/new" class="btn btn-primary">+ Nuevo Tarifario</a>
+    </div>
+    <div class="card">
+      <div *ngIf="loadingT" style="text-align:center;padding:32px;color:#64748b">Cargando...</div>
+      <div class="table-wrapper" *ngIf="!loadingT">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let t of tarifarios">
+              <td><strong>{{ t.nombre_tarifario }}</strong></td>
+              <td>{{ t.descripcion || '—' }}</td>
+              <td class="actions-cell">
+                <a [routerLink]="['/tarifario', t.id_tarifario]" class="btn btn-sm btn-outline">Ver</a>
+                <button class="btn btn-sm btn-danger" (click)="eliminarTarifario(t)">Eliminar</button>
+              </td>
+            </tr>
+            <tr *ngIf="tarifarios.length === 0">
+              <td colspan="3" style="text-align:center;color:#94a3b8;padding:32px">No hay tarifarios</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<div class="page-container">
+  <div class="page-header">
+    <h1>Estaciones de Servicio</h1>
+    <a routerLink="/estaciones-servicio/new" class="btn btn-primary">+ Nueva Estación</a>
+  </div>
+  <div *ngIf="successMsg" class="alert alert-success">{{ successMsg }}</div>
+  <div class="card">
+    <div *ngIf="loading" style="text-align:center; padding:32px; color:#64748b">Cargando...</div>
+    <div class="table-wrapper" *ngIf="!loading">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Código ES</th>
+            <th>Tipo</th>
+            <th>Provincia</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let e of estaciones">
+            <td><strong>{{ e.nombre }}</strong></td>
+            <td>{{ e.cod_es || '—' }}</td>
+            <td>{{ e.tipo || '—' }}</td>
+            <td>{{ e.provincia || '—' }}</td>
+            <td class="actions-cell">
+              <a [routerLink]="['/estaciones-servicio', e.id_estacion]" class="btn btn-sm btn-outline">Ver</a>
+              <a [routerLink]="['/estaciones-servicio', e.id_estacion, 'edit']" class="btn btn-sm btn-secondary">Editar</a>
+              <button class="btn btn-sm btn-danger" (click)="eliminar(e)">Eliminar</button>
+            </td>
+          </tr>
+          <tr *ngIf="estaciones.length === 0">
+            <td colspan="5" style="text-align:center; color:#94a3b8; padding:32px">No hay estaciones</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

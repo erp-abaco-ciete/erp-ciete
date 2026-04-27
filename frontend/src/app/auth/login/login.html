@@ -1,0 +1,21 @@
+<div class="login-contenedor">
+    <div class="login-formulario">
+        <form class="form" [formGroup]="formularioLogin" (ngSubmit)="onSubmit()">
+            <h2>Inicia sesión</h2>
+
+            <div *ngIf="errorMsg" class="login-error">{{ errorMsg }}</div>
+
+            <div class="formulario">
+                <input type="text" formControlName="email" placeholder="Usuario o correo electrónico" class="input_text">
+            </div>
+
+            <div class="formulario">
+                <input type="password" formControlName="password" placeholder="Contraseña" class="input_text">
+            </div>
+
+            <button id="boton_login" type="submit" [disabled]="formularioLogin.invalid || loading">
+                {{ loading ? 'Accediendo...' : 'Entrar' }}
+            </button>
+        </form>
+    </div>
+</div>

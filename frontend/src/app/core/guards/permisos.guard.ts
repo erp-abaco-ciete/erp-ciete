@@ -19,7 +19,7 @@ export const permisosGuard: CanActivateFn = (route: ActivatedRouteSnapshot) => {
         permisos = {};
       }
       if (permisos[modulo] === true) return true;
-      router.navigate(['/dashboard']);
+      router.navigate(['/']);
       return false;
     }),
     catchError(() => {

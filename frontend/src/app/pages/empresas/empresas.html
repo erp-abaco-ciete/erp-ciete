@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<div class="page-container">
+  <div class="page-header">
+    <h1>Empresas</h1>
+    <a routerLink="/empresas/new" class="btn btn-primary">+ Nueva Empresa</a>
+  </div>
+  <div *ngIf="successMsg" class="alert alert-success">{{ successMsg }}</div>
+  <div class="card">
+    <div *ngIf="loading" style="text-align:center; padding:32px; color:#64748b">Cargando...</div>
+    <div class="table-wrapper" *ngIf="!loading">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>CIF</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let e of empresas">
+            <td><strong>{{ e.nombre }}</strong></td>
+            <td>{{ e.cif || '—' }}</td>
+            <td>{{ e.email || '—' }}</td>
+            <td>{{ e.telefono || '—' }}</td>
+            <td class="actions-cell">
+              <a [routerLink]="['/empresas', e.id_empresa]" class="btn btn-sm btn-outline">Ver</a>
+              <a [routerLink]="['/empresas', e.id_empresa, 'edit']" class="btn btn-sm btn-secondary">Editar</a>
+              <button class="btn btn-sm btn-danger" (click)="eliminar(e)">Eliminar</button>
+            </td>
+          </tr>
+          <tr *ngIf="empresas.length === 0">
+            <td colspan="5" style="text-align:center; color:#94a3b8; padding:32px">No hay empresas</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

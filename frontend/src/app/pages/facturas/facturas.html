@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<div class="page-container">
+  <div class="page-header">
+    <h1>Facturas</h1>
+    <a routerLink="/facturas/new" class="btn btn-primary">+ Nueva Factura</a>
+  </div>
+  <div *ngIf="successMsg" class="alert alert-success">{{ successMsg }}</div>
+  <div class="card">
+    <div *ngIf="loading" style="text-align:center; padding:32px; color:#64748b">Cargando...</div>
+    <div class="table-wrapper" *ngIf="!loading">
+      <table>
+        <thead>
+          <tr>
+            <th>Nº Factura</th>
+            <th>Empresa</th>
+            <th>Fecha</th>
+            <th>Importe total</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let f of facturas">
+            <td><strong>{{ f.numero_factura || '#' + f.id_factura }}</strong></td>
+            <td>{{ getNombreEmpresa(f.id_empresa) }}</td>
+            <td>{{ f.fecha_factura || '—' }}</td>
+            <td>{{ f.importe_total | number:'1.2-2' }} €</td>
+            <td class="actions-cell">
+              <a [routerLink]="['/facturas', f.id_factura]" class="btn btn-sm btn-outline">Ver</a>
+              <button class="btn btn-sm btn-danger" (click)="eliminar(f)">Eliminar</button>
+            </td>
+          </tr>
+          <tr *ngIf="facturas.length === 0">
+            <td colspan="5" style="text-align:center; color:#94a3b8; padding:32px">No hay facturas</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,10 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  const token = localStorage.getItem('erp_token');
+  let token: string | null = null;
+  try {
+    token = localStorage.getItem('erp_token');
+  } catch {}
   if (token) {
     const cloned = req.clone({
       headers: req.headers.set('Authorization', `Bearer ${token}`)
