@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/pages/contactos/detail/contactos-detail.component.css"],
-  "sourcesContent": [".detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }\n@media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } }\n.section-title { font-size: 15px; font-weight: 600; margin-bottom: 16px; color: #1e293b; }\n.detail-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f1f5f9; }\n.detail-row span { color: #64748b; }\n"],
-  "mappings": ";AAAA,CAAC;AAAc,WAAS;AAAM,yBAAuB,IAAI;AAAK,OAAK;AAAM;AACzE,OAAO,CAAC,SAAS,EAAE;AAAS,GAD3B;AAC0C,2BAAuB;AAAK;AAAE;AACzE,CAAC;AAAgB,aAAW;AAAM,eAAa;AAAK,iBAAe;AAAM,SAAO;AAAS;AACzF,CAAC;AAAa,WAAS;AAAM,mBAAiB;AAAe,eAAa;AAAQ,WAAS,KAAK;AAAG,iBAAe,IAAI,MAAM;AAAS;AACrI,CADC,WACW;AAAO,SAAO;AAAS;",
-  "names": []
-}

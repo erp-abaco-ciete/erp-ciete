@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/pages/contactos/form/contactos-form.component.css"],
-  "sourcesContent": [".form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }\n@media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } }\n"],
-  "mappings": ";AAAA,CAAC;AAAY,WAAS;AAAM,yBAAuB,IAAI;AAAK,OAAK;AAAM;AACvE,OAAO,CAAC,SAAS,EAAE;AAAS,GAD3B;AACwC,2BAAuB;AAAK;AAAE;",
-  "names": []
-}

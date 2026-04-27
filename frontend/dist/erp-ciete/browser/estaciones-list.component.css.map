@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/pages/estaciones/list/estaciones-list.component.css"],
-  "sourcesContent": [".actions-cell { display: flex; gap: 6px; }\n.badge-tipo { background: #e0e7ff; color: #3730a3; }\n"],
-  "mappings": ";AAAA,CAAC;AAAe,WAAS;AAAM,OAAK;AAAK;AACzC,CAAC;AAAa,cAAY;AAAS,SAAO;AAAS;",
-  "names": []
-}
