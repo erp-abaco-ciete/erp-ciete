@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<div class="page-container">
+  <div class="page-header">
+    <h1>Pedidos</h1>
+  </div>
+
+  <div class="card">
+    <div *ngIf="loading" style="text-align:center; padding:32px; color:#64748b">Cargando...</div>
+    <div class="table-wrapper" *ngIf="!loading">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Fecha solicitud</th>
+            <th>Estado</th>
+            <th>Presupuesto origen</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of pedidos">
+            <td><strong>#{{ p.id_pedido }}</strong></td>
+            <td>{{ p.fecha_solicitud_pedido || '—' }}</td>
+            <td><span class="badge badge-{{ p.estado }}">{{ p.estado }}</span></td>
+            <td>
+              <a *ngIf="p.id_presupuesto" [routerLink]="['/presupuestos', p.id_presupuesto]">#{{ p.id_presupuesto }}</a>
+              <span *ngIf="!p.id_presupuesto">—</span>
+            </td>
+            <td>
+              <a [routerLink]="['/pedidos', p.id_pedido]" class="btn btn-sm btn-outline">Ver</a>
+            </td>
+          </tr>
+          <tr *ngIf="pedidos.length === 0">
+            <td colspan="5" style="text-align:center; color:#94a3b8; padding:32px">No hay pedidos</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

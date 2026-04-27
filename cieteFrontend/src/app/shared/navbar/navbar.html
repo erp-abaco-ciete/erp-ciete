@@ -1,0 +1,20 @@
+<nav class="navbar">
+  <a class="navbar-brand" routerLink="/">
+    <img src="logo.png" alt="Ciete" class="logo">
+    <span>Ciete, S.A.</span>
+  </a>
+
+  <div class="navbar-links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Dashboard</a>
+    <a routerLink="/presupuestos" routerLinkActive="active">Presupuestos</a>
+    <a routerLink="/pedidos" routerLinkActive="active">Pedidos</a>
+    <a routerLink="/empresas" routerLinkActive="active">Empresas</a>
+    <a routerLink="/contactos" routerLinkActive="active">Contactos</a>
+    <a routerLink="/estaciones-servicio" routerLinkActive="active">Estaciones</a>
+    <a routerLink="/contratos-tarifarios" routerLinkActive="active" *ngIf="hasPermiso('contratos')">Contratos</a>
+    <a routerLink="/facturas" routerLinkActive="active" *ngIf="hasPermiso('facturas')">Facturas</a>
+    <a routerLink="/usuarios" routerLinkActive="active" *ngIf="isAdmin">Usuarios</a>
+  </div>
+
+  <button class="btn-logout" (click)="logout()">Cerrar sesión</button>
+</nav>
